@@ -6,7 +6,7 @@ import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main() async {
-  test('killing isolate lock mutex undefinitely', () async {
+  test('killing isolate locks mutex indefinitely', () async {
     Future<void> keepRunning(SendPort port) async {
       await RustLib.init();
       await runWithLock(f: () async {
@@ -58,7 +58,7 @@ Future<void> main() async {
       await Future<void>.delayed(Duration(milliseconds: 500));
     }
 
-    // it will hang undefinitely
+    // it will hang indefinitely
     await finish(port.sendPort);
 
     // it never reaches this point
